@@ -1,0 +1,6 @@
+CREATE TABLE owner(
+    Item VARCHAR(50) PRIMARY KEY,
+    Price INTEGER NOT NULL,
+    Stock VARCHAR(50),
+    Supplier VARCHAR(50) NOT NULL
+);

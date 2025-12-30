@@ -1,0 +1,290 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Pgae</title>
+</head>
+<body>
+    <h2>The total number of products are : <%=count%></h2>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Logo */
+    .logo {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    /* Hero Card */
+    .hero-card {
+      background: white;
+      border-radius: 50px;
+      padding: 60px 50px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: fadeInUp 0.8s ease;
+      width: 100%;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1a202c;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #718096;
+      margin-bottom: 50px;
+    }
+
+    /* Stats Box */
+    .stats-box {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 25px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+    }
+
+    .stats-label {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.95);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .stats-number {
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    /* Button */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 18px 60px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+    }
+
+    /* Features Grid */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .feature {
+      padding: 30px 20px;
+      background: #f7fafc;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+      background: white;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .feature-text {
+      font-size: 1rem;
+      color: #4a5568;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      color: #e2e8f0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .hero-card {
+        padding: 50px 40px;
+      }
+
+      .logo {
+        width: 90px;
+        height: 90px;
+        font-size: 2.8rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 40px 15px;
+      }
+
+      .hero-card {
+        padding: 40px 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .stats-number {
+        font-size: 3rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-card {
+        padding: 30px 20px;
+        border-radius: 35px;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+        font-size: 2.4rem;
+        margin-bottom: 20px;
+      }
+
+      .btn-primary {
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ✅ Logo moved inside hero card -->
+    <div class="hero-card">
+      <div class="logo">🏪</div>
+
+      <h1>Shop Management</h1>
+      <p class="subtitle">Your complete inventory solution</p>
+
+      <div class="stats-box">
+        <div class="stats-label">Total Products</div>
+        <div class="stats-number"><%= count %></div>
+      </div>
+
+      <a href="/products" class="btn-primary">View All Products →</a>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">📦</div>
+          <div class="feature-text">Inventory Tracking</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <div class="feature-text">Real-time Updates</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🚀</div>
+          <div class="feature-text">Easy Management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+        © 2025 Shop Management System — All Rights Reserved.
+      </footer>
+</body>
+</html>

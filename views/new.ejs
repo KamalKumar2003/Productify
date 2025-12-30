@@ -1,0 +1,287 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Item</title>
+</head>
+<body>
+    <form method="POST" action="/products/new">
+       <input name="id" type="id" placeholder="Enter Id" /> <br>
+       <input name="item" type="text" placeholder="Enter Item" /><br>
+       <input name="Price" type="Price" placeholder="Enter Price" /><br>
+       <input name="Stock" type="Stock" placeholder="Enter Stock" /><br>
+       <input name="Supplier" type="text" placeholder="Enter Supplier" /><br>
+       <button>Submit</button>
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add New Product - Shop Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 20px 40px;
+    }
+
+    /* --- Container --- */
+    .container {
+      max-width: 650px;
+      width: 100%;
+    }
+
+    /* --- Card --- */
+    .form-card {
+      background: white;
+      border-radius: 25px;
+      padding: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      margin-top: 20px;
+      animation: fadeUp 0.8s ease;
+      transition: all 0.3s ease;
+    }
+
+    .form-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Header --- */
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2.5rem;
+      box-shadow: 0 10px 30px rgba(72, 187, 120, 0.4);
+      color: white;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #1a202c;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .form-subtitle {
+      color: #718096;
+      font-size: 1rem;
+    }
+
+    /* --- Form Inputs --- */
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      color: #2d3748;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .required {
+      color: #e53e3e;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #48bb78;
+      box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.15);
+    }
+
+    .input-icon {
+      position: relative;
+    }
+
+    .icon {
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      font-size: 1.3rem;
+    }
+
+    .helper-text {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* --- Buttons --- */
+    .form-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 16px 28px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(72, 187, 120, 0.5);
+    }
+
+    .btn-secondary {
+      background: #edf2f7;
+      color: #4a5568;
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      body {
+        padding: 60px 20px;
+      }
+
+      .form-card {
+        padding: 35px 25px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-card">
+      <div class="form-header">
+        <div class="form-icon">➕</div>
+        <h1>Add New Product</h1>
+        <p class="form-subtitle">Fill in the details to add a new product</p>
+      </div>
+
+      <form method="POST" action="/products/new">
+        <div class="form-group">
+          <label for="id">Product ID <span class="required">*</span></label>
+          <div class="input-icon">
+            <span class="icon">#</span>
+            <input type="text" id="id" name="id" placeholder="e.g., PRD001" maxlength="20" required />
+          </div>
+          <div class="helper-text">Unique identifier for the product</div>
+        </div>
+
+        <div class="form-group">
+          <label for="item">Product Name <span class="required">*</span></label>
+          <div class="input-icon">
+            <span class="icon">📦</span>
+            <input type="text" id="item" name="item" placeholder="e.g., Wireless Mouse" maxlength="100" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Price">Price <span class="required">*</span></label>
+          <div class="input-icon">
+            <span class="icon">₹</span>
+            <input type="number" id="Price" name="Price" placeholder="0.00" step="0.01" min="0" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Stock">Stock Quantity <span class="required">*</span></label>
+          <div class="input-icon">
+            <span class="icon">📊</span>
+            <input type="number" id="Stock" name="Stock" placeholder="0" min="0" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Supplier">Supplier <span class="required">*</span></label>
+          <div class="input-icon">
+            <span class="icon">🏢</span>
+            <input type="text" id="Supplier" name="Supplier" placeholder="e.g., ABC Electronics" maxlength="100" required />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a href="/products" class="btn btn-secondary">← Cancel</a>
+          <button type="submit" class="btn btn-primary">Add Product ✓</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

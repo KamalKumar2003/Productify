@@ -1,0 +1,21 @@
+{
+  "name": "productify",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Kamal",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "method-override": "^3.0.0",
+    "mysql2": "^3.15.3",
+    "nodemon": "^3.1.10",
+    "uuid": "^13.0.0",
+    "uuid-v4": "^0.1.0"
+  }
+}
