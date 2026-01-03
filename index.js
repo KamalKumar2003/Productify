@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const mysql = require('mysql2');
 const express = require("express");
 const app = express();
@@ -10,11 +12,23 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'shop_app',
-  password: 'Mysql@2003'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT || 2020,
+  ssl: {
+    rejectUnauthorized: true
+  }
 });
+
+connection.connect(err => {
+  if(err){
+    console.error("DB connection failed", err.message);
+  }else{
+    console.log("MySql Connected");
+  }
+})
 
 //Home Route
 app.get("/", (req, res) => {
@@ -164,6 +178,9 @@ app.get("/products/:id/delete", (req, res) => {
   }
 });
 
-app.listen("2020", () => {
-    console.log("Server is listening to port 2020");
-})
+const PORT = process.env.PORT || 2020;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+module.exports = app;
